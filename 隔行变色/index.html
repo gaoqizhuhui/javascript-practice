@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>隔行变色</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+        }
+        ul,li{list-style: none;}
+        #div1{
+            width: 300px;
+            height:300px;
+            margin: 30px auto;
+
+        }
+        #div1 li{
+            text-align: center;
+            line-height: 30px;
+            height: 30px;
+            border: 1px solid #dddddd;
+        }
+        .l1{background: #aaaaaa;}
+        .l2{background: #c88;}
+        .l3{background: #89cca2;}
+    </style>
+</head>
+<body>
+<div id="div1">
+    <ul>
+        <li>练习隔行变色</li>
+        <li>练习隔行变色</li>
+        <li>练习隔行变色</li>
+        <li>练习隔行变色</li>
+        <li>练习隔行变色</li>
+        <li>练习隔行变色</li>
+        <li>练习隔行变色</li>
+        <li>练习隔行变色</li>
+        <li>练习隔行变色</li>
+    </ul>
+</div>
+<script type="text/javascript">
+    var oDiv=document.getElementById('div1');
+    var aLis=oDiv.getElementsByTagName('li');
+    for(var i=0;i<aLis.length;i++){
+        if(i%2===0){
+            //把之前的背景class用自定义的对象属性oldValue存起
+            //以便onmouseout时恢复原来的class
+            aLis[i].className='l1';
+            aLis[i].oldValue='l1';
+        }
+        else
+        {
+            aLis[i].className='l2';
+            aLis[i].oldValue='l2';
+        }
+
+        aLis[i].onmouseover=function () {
+            this.className='l3';
+        }
+        aLis[i].onmouseout=function () {
+            //原来背景颜色是啥就是啥
+            this.className=this.oldValue;
+        }
+    }
+
+</script>
+</body>
+</html>

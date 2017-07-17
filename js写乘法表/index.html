@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js写乘法表</title>
+    <style type="text/css">
+        *{
+            margin:0;
+            padding: 0;
+        }
+        ul,li{list-style: none;}
+        #tab{
+            width:1000px;
+            height: 400px;
+            border: 1px solid #ff0000;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -460px;
+            margin-top: -265px;
+            padding: 10px;
+            border-radius: 10px;/*有圆角的边框*/
+        }
+        #tab li{
+            line-height: 30px;
+            margin: 10px;
+        }
+        #tab li span{
+            display: inline-block;
+            margin-right: 20px;
+        }
+        .c1{background:#ffebcd;}
+        .c2{background: #ddd;}
+    </style>
+</head>
+<body>
+<div id="tab">
+
+</div>
+<script type="text/javascript">
+    var oTab=document.getElementById('tab');
+    //字符串连接，添加内容
+    var str="";
+
+    str+="<ul>"
+        for(var i=1;i<=9;i++){
+            var bg="c1"
+            if(i%2===0){
+                bg="c1";
+            }
+            else {
+                bg = "c2"
+            }
+            //""和''错开用，外""则内用'',或者外''内用"".
+            //最外层用"",添加变量时用"+变量+"，若最外面用'',添加变量时用'+变量+'。
+            str+="<li class='"+bg+"'>"
+            for(var j=1;j<=i;j++){
+                //列为span，行为li
+                str+="<span>"
+                   str+=""+j+"*"+i+"="+(j*i)+"" ;
+                str+="</span>"
+            }
+
+            str+="</li>"
+        }
+    str+="</ul>"
+    oTab.innerHTML=str;
+    //innerHTML和innerTEXT区别：innerHTML能识别html标签
+</script>
+</body>
+</html>

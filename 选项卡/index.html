@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选项卡</title>
+    <style type="text/css">
+        *{
+            margin:0;
+            padding: 0;
+            font-size: 14px;
+        }
+        ul,li{list-style: none;}
+        #tab{
+            width:300px;
+            margin: 30px auto;
+        }
+        #tab ul{
+            /*relative相对自身原来位置向下移1px，这样就和div边框不重叠了*/
+            position: relative;
+            top:1px;
+        }
+        #tab li{
+            float: left;
+            height: 30px;
+            width:90px;
+            text-align: center;
+            line-height: 30px;
+            border: 1px solid #ddd;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+        #tab div{
+            display: none;
+            clear: both;
+            height: 100px;
+            width:270;
+            border: 1px solid #ddd;
+            text-align: center;
+            padding-top: 90px;
+        }
+        li.select{
+            background: #aaa;
+        }
+        #tab div.select{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div id="tab">
+    <ul>
+        <li class="select">国产剧</li>
+        <li>韩剧</li>
+        <li>美剧</li>
+    </ul>
+    <div class="select">国产剧页面</div>
+    <div>韩剧页面</div>
+    <div>美剧页面</div>
+</div>
+<script type="text/javascript">
+    var oTab=document.getElementById('tab');
+    var aLis=oTab.getElementsByTagName('li');
+    var aDivs=oTab.getElementsByTagName('div');
+
+    for(var i=0;i<aLis.length;i++){
+        //aLis是对象，可以自己设置属性index，存储他当前的索引
+        aLis[i].index=i;
+        aLis[i].onmouseover=function () {
+            //先清除所有class，然后再选当前的设置class
+            for(var j=0;j<aLis.length;j++){
+                aLis[j].className='';
+                aDivs[j].className='';
+            }
+            //声明（定义）函数，相当于在开辟的地址里写入字符串，等都加载完执行的时候才是变量。
+            //所以不能直接用alis[i].classname,因为加载完的i=3，所以要把每个alis[]当前索引保存下来
+            //即alis[i].index=i
+            aLis[this.index].className='select';
+            aDivs[this.index].className='select';
+
+        }
+    }
+
+
+
+</script>
+</body>
+</html>
