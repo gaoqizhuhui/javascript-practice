@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>获取节点</title>
+</head>
+<body>
+<h1>获取节点练习</h1>
+<!--以下练习的描述-->
+<ul>
+    <li>获取上一个元素节点</li>
+    <li>获取以上所有的元素节点</li>
+    <!--haha-->
+    <li id="li3">获取下一个元素节点</li>
+    <li>获取以下所有的元素节点</li>
+    <li>获取所有兄弟的元素节点</li>
+</ul>
+<!--想找上一个哥哥元素节点，发现直接用previousSibling找的不一定是元素节点，找多少次-->
+<!--previousSibling也不知道，所以用循环来判断nodeType是否等于1-->
+
+<script type="text/javascript">
+    var oLi3=document.getElementById('li3');
+
+    //ele:自定义形参，一般从谁那获取，就为谁
+    //获取上一个哥哥元素节点
+    function prev(ele) {
+        var pre=ele.previousSibling;
+        while(pre&&pre.nodeType!==1){
+            pre=pre.previousSibling;
+        }
+        return pre;
+    }
+
+
+    //获取以上所有兄弟元素节点
+    function prevAll(ele){
+        var pre=ele.previousSibling;
+        var arr=[];//存入空数组中
+        while(pre){
+            if(pre.nodeType===1){
+                arr.unshift(pre);//unshift:后存的放前面
+            }
+            pre=pre.previousSibling;
+        }
+        return arr;
+    }
+//    console.log(prevAll(oLi3));
+
+    //获取下一个弟弟元素节点
+    function next(ele) {
+        var nex=ele.nextSibling;
+        while(nex&&nex.nodeType!==1){
+            nex=nex.nextSibling;
+        }
+        return nex;
+    }
+console.log(next(oLi3));
+    //获取以下所有的弟弟元素节点
+    function nextAll(ele) {
+        var nex=ele.nextSibling;
+        var arr=[];
+        while (nex){
+            if(nex.nodeType===1){
+                arr.push(nex);
+            }
+            nex=nex.nextSibling;
+        }
+        return arr;
+    }
+    console.log(nextAll(oLi3));
+
+    //获取相邻的两个元素节点
+    function nearNode(ele){
+        var pre=ele.previousSibling;
+        var nex=ele.nextSibling;
+        var arr=[];
+        while(pre&&pre.nodeType!==1){
+            pre=pre.previousSibling;
+        }
+        arr.push(pre);
+
+        while(nex&&nex.nodeType!==1){
+            nex=nex.nextSibling;
+        }
+        arr.push(nex);
+        return arr;
+    }
+
+    //获取所有的兄弟元素节点
+    function allNode(ele){
+        var pre=ele.previousSibling;
+        var nex=ele.nextSibling;
+        var arr1=[];
+
+        while(pre){
+            if(pre.nodeType===1){
+                arr1.unshift(pre);
+            }
+            pre=pre.previousSibling;
+        }
+        while(nex){
+            if(nex.nodeType===1){
+                arr1.push(nex);
+            }
+            nex=nex.nextSibling;
+        }
+        return arr1;
+    }
+
+
+    console.log(allNode(oLi3));
+
+</script>
+</body>
+</html>
