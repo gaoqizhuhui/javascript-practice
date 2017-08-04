@@ -25,6 +25,7 @@
 			margin: 10px auto;
 			background-repeat: no-repeat;
 		}
+
 		#goUp{
 			display: none;
 			width: 50px;
@@ -75,6 +76,7 @@
 	<div id="div4" style="background-image:url(image/4.png)"></div>
 	<div id="div5" style="background-image:url(image/5.png)"></div>
 	<div id="div6" style="background-image:url(image/6.png)"></div>
+	<div id="div7" ></div>
 	<a href="javascript:;" id="goUp">Go</a>
 	<ul>
 		<li>超值逛</li>
@@ -105,8 +107,8 @@
 		oUl.style.display=curTop>curHeight?"block":"none";
 		for (var i = 0; i < aDivs.length; i++) {
 			var curDivTop=aDivs[i].offsetTop;
-			if (curTop+100>curDivTop) {
-				for (var j = 0; j < aLis.length; j++) {
+			if (curTop+300>curDivTop) {
+				for (var j = 0; j < i; j++) {
 					aLis[j].style.background="none";
 				}
 				aLis[i].style.background="lightgray";
